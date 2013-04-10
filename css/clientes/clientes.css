@@ -1,0 +1,8 @@
+#clientes_bcli
+{
+	overflow: scroll;
+	overflow-x:hidden;
+	height: 300px;
+	border:1px dotted #ccc;
+	padding: 5px; 
+}
