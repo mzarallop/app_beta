@@ -9,6 +9,8 @@
               <li><a href="<?php echo base_url(); ?>proyecto/tareas">Mis Tareas</a></li>
               <li><a href="<?php echo base_url(); ?>documentacion">Documentación</a></li>
               <li><a href="<?php echo base_url(); ?>clientes">Clientes</a></li>
+              <li><a href="<?php echo base_url(); ?>clientes/marketing">Marketing</a></li>
+              <li><a href="<?php echo base_url(); ?>clientes/emailmarketing">Emails Marketing</a></li>
               <li><a href="<?php echo base_url(); ?>usuarios">Usuarios</a></li>
               <li><a href="<?php echo base_url(); ?>cotizaciones">Cotizaciones</a></li>
               <li><a href="<?php echo base_url(); ?>facturas">Facturas</a></li>

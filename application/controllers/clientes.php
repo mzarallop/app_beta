@@ -7,21 +7,21 @@ class Clientes extends CI_Controller {
 	 *
 	 * Maps to the following URL
 	 * 		http://example.com/index.php/welcome
-	 *	- or -  
+	 *	- or -
 	 * 		http://example.com/index.php/welcome/index
 	 *	- or -
-	 * Since this controller is set as the default controller in 
+	 * Since this controller is set as the default controller in
 	 * config/routes.php, it's displayed at http://example.com/
 	 *
 	 * So any other public methods not prefixed with an underscore will
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	
-	
+
+
 	public function index()
 	{
-			
+
 
 			$datos['css'] = array("bootstrap.css", "bootstrap.min.css", "clientes/clientes.css");
 			$datos['js'] = array("jquery.js","bootstrap.js", "bootstrap.min.js", "bootstrap-tab.js","clientes/clientes.js");
@@ -33,7 +33,20 @@ class Clientes extends CI_Controller {
 			$this->load->view('clientes/index', $datos);
 			$this->load->view('fijos/footer');
 	}
-	
+
+	public function marketing()
+	{
+		$datos['css'] = array("bootstrap.css", "bootstrap.min.css", "clientes/clientes.css");
+			$datos['js'] = array("jquery.js","bootstrap.js", "bootstrap.min.js", "bootstrap-tab.js","clientes/clientes.js");
+			$datos['title'] = 'Gestión de clientes';
+			$datos['regiones'] = $this->selectores->clientes_region();
+			$this->load->database();
+			$this->load->view('fijos/head', $datos);
+			$this->load->view('fijos/menu', $datos);
+			$this->load->view('clientes/marketing', $datos);
+			$this->load->view('fijos/footer');
+	}
+
 	public function ficha()
 	{
 			$datos['css'] = array("bootstrap.css", "bootstrap.min.css");
@@ -62,7 +75,7 @@ class Clientes extends CI_Controller {
 				$this->load->model('mod_clientes');
 
 				$clientes = $this->mod_clientes->mostrar_clientes($_POST);
-					
+
 					$tabla = '<table class="table table-striped table-condensed">';
 					foreach($clientes as $cliente)
 					{
@@ -73,15 +86,15 @@ class Clientes extends CI_Controller {
 						$tabla.='<td>'.$cliente['COMUNA'].'</td>';
 						$tabla.='<td>'.$cliente['COD_AREA'].' - '.$cliente['TELEFONO'].'</td>';
 						$tabla.='<td>'.$cliente['EMAIL'].'</td>';
-						$tabla.='<td><a href="javascript:;">Ver</a></td>';
+						$tabla.='<td><a class="ver_colegio" href="javascript:;" data-id="'.$cliente['ID_CLIENTE'].'" data-rbd="'.$cliente['RBD'].'"><i class="icon-search"></i></a></td>';
 						$tabla.='</tr>';
 					}
 						$tabla.='</table>';
-					echo $tabla;	
+					echo $tabla;
 			break;
 		}
 	}
-	
+
 }
 
 /* End of file welcome.php */
